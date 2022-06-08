@@ -8,53 +8,53 @@ object Listy: TListy
   ClientWidth = 630
   LCLVersion = '2.2.0.4'
   object Koniec: TButton
-    Left = 84
-    Height = 25
-    Top = 104
-    Width = 75
+    Left = 472
+    Height = 49
+    Top = 344
+    Width = 120
     Caption = 'Koniec'
     OnClick = KoniecClick
     TabOrder = 0
   end
   object Info: TButton
-    Left = 84
-    Height = 25
-    Top = 152
-    Width = 75
+    Left = 328
+    Height = 49
+    Top = 344
+    Width = 120
     Caption = 'Info'
     TabOrder = 1
   end
   object Sortuj: TButton
-    Left = 84
-    Height = 25
-    Top = 200
-    Width = 75
+    Left = 168
+    Height = 49
+    Top = 344
+    Width = 120
     Caption = 'Sortuj'
     OnClick = SortujClick
     TabOrder = 2
   end
   object Losuj: TButton
-    Left = 84
-    Height = 25
-    Top = 248
-    Width = 75
+    Left = 24
+    Height = 49
+    Top = 344
+    Width = 120
     Caption = 'Losuj'
     OnClick = LosujClick
     TabOrder = 3
   end
   object ListBox1: TListBox
-    Left = 200
-    Height = 379
+    Left = 88
+    Height = 288
     Top = 24
-    Width = 152
+    Width = 136
     ItemHeight = 0
     TabOrder = 4
   end
   object ListBox2: TListBox
-    Left = 408
-    Height = 379
-    Top = 24
-    Width = 152
+    Left = 392
+    Height = 291
+    Top = 21
+    Width = 136
     ItemHeight = 0
     TabOrder = 5
   end

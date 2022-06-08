@@ -31,9 +31,7 @@ type
     procedure LosujClick(Sender: TObject);
     procedure SortujClick(Sender: TObject);
   private
-
   public
-
   end;
 
 var
@@ -42,7 +40,7 @@ var
   wskL1, wskL2 : PslistEl;           // wskaźniki elementów listy
   war    : integer;                 // wartość elementu
   i    : integer;                   // licznik
-  t    : array [1..22] of integer;  //tablica do zapietania listbox1
+  t    : array [1..20] of integer;  //tablica do zapietania listbox1
 
 implementation
 
@@ -50,35 +48,25 @@ implementation
 
 { TListy }
 
-procedure tworzenieListyBox1;
+procedure CreateListBox1;
+ begin
+ new ( wsk );
+ new ( wsk^.next );
+ wsk^.next^.next := nil;
+ wsk^.next^.data := MAXINT;
+  for i := 1 to 20 do
+      begin
+       war := Random(200);
+       wskL2 := wsk;                    // wskL2 ustawiamy na pierwszego strażnika
+       new ( wskL1 );                 // tworzymy nowy element
+       wskL1^.data := war;              // inicjujemy element
+       wskL1^.next := wskL2^.next;
+       wskL2^.next := wskL1;              // element wstawiamy do listy
+      end;
+   wskL2 := wsk^.next;                // listę przesyłamy na wyjście
+ end;
 
-begin
-  new ( wsk );                   // tworzymy pierwszego strażnika
-new ( wsk^.next );             // tworzymy drugiego strażnika
-wsk^.next^.next := nil;        // drugi strażnik jest ostatni na liście
-wsk^.next^.data := MAXINT;     // wartość drugiego strażnika
-
-for i := 1 to 20 do
-begin
-
-war := Random(10);
-
-wskL2 := wsk;                    // wskL2 ustawiamy na pierwszego strażnika
-
-new ( wskL1 );                 // tworzymy nowy element
-
-wskL1^.data := war;              // inicjujemy element
-wskL1^.next := wskL2^.next;
-
-wskL2^.next := wskL1;              // element wstawiamy do listy
-
-end;
-
-wskL2 := wsk^.next;                // listę przesyłamy na wyjście
-end;
-
-procedure wyswietlanieListyBox1;
-
+procedure ShowListBox1;
 begin
      Listy.listBox1.Clear;   // wyczyszczamy listbox
      i := 1;
@@ -91,7 +79,7 @@ begin
       end;
 end;
 
-procedure wyswietlanieListBox2;
+procedure ShowListBox2;
 begin
   Listy.listBox2.Clear;  // wyczyszczamy listbox
   i := 1;
@@ -102,6 +90,7 @@ begin
          inc(i);
       end;
 end;
+  {
 procedure usuwanie;
 begin
     while wsk <> nil do            // usuwamy listę z pamięci
@@ -110,62 +99,47 @@ begin
     wsk := wsk^.next;
     dispose ( wskL1 );
   end;
-
 end;
-procedure sortowanie;
-
+      }
+procedure Sort;
 begin
-
   new ( wsk );                   // tworzymy pierwszego strażnika
   new ( wsk^.next );             // tworzymy drugiego strażnika
   wsk^.next^.next := nil;        // drugi strażnik jest ostatni na liście
   wsk^.next^.data := MAXINT;     // wartość drugiego strażnika
-
-  for i := 1 to 20 do
-
-  begin
-    war := t[i];
-    wskL2 := wsk;                    // wskl2 ustawiamy na pierwszego strażnika
-
-    while war > wskL2^.next^.data do // szukamy miejsca wstawienia
-      wskL2 := wskL2^.next;
-
-    new ( wskL1 );                 // tworzymy nowy element
-
-    wskL1^.data := war;              // inicjujemy element
-    wskL1^.next := wskL2^.next;
-
-    wskL2^.next := wskL1;              // element wstawiamy do listy
-
-  end;
-
-  wskL2 := wsk^.next;                // listę przesyłamy na wyjście
-
+    for i := 1 to 20 do
+        begin
+             war := t[i];
+             wskL2 := wsk;                    // wskl2 ustawiamy na pierwszego strażnika
+               while war > wskL2^.next^.data do // szukamy miejsca wstawienia
+                wskL2 := wskL2^.next;
+                 new ( wskL1 );                 // tworzymy nowy element
+                 wskL1^.data := war;              // inicjujemy element
+                 wskL1^.next := wskL2^.next;
+                 wskL2^.next := wskL1;              // element wstawiamy do listy
+         end;
+   wskL2 := wsk^.next;                // listę przesyłamy na wyjście
 end;
 
 procedure TListy.LosujClick(Sender: TObject);
-
-  begin
-  tworzenieListyBox1;
-  wyswietlanieListyBox1;
-  usuwanie;
-  end;
-
-
-
+begin
+     ListBox1.clear;
+     ListBox2.clear;
+     CreateListBox1;
+     ShowListBox1;
+     //usuwanie;
+end;
 
 procedure TListy.SortujClick(Sender: TObject);
-
 begin
-sortowanie;
-wyswietlanieListBox2;
-usuwanie;
+     Sort;
+     ShowListBox2;
+     //usuwanie;
 end;
 
 procedure TListy.KoniecClick(Sender: TObject);
-
 begin
-  Application.Terminate;
+  Close;
 end;
 
 end.
