@@ -22,6 +22,7 @@ object Listy: TListy
     Top = 344
     Width = 120
     Caption = 'Info'
+    OnClick = InfoClick
     TabOrder = 1
   end
   object Sortuj: TButton
@@ -44,7 +45,7 @@ object Listy: TListy
   end
   object ListBox1: TListBox
     Left = 88
-    Height = 288
+    Height = 304
     Top = 24
     Width = 136
     ItemHeight = 0
@@ -52,7 +53,7 @@ object Listy: TListy
   end
   object ListBox2: TListBox
     Left = 392
-    Height = 291
+    Height = 307
     Top = 21
     Width = 136
     ItemHeight = 0

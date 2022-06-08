@@ -12,9 +12,9 @@ type
   { TListy }
   // typ elementu listy jednokierunkowej
 
-  PslistEl = ^slistEl;
-  slistEl =  record
-    next  : PslistEl;
+  PList = ^Tlist;
+  Tlist =  record
+    next  : PList;
     data  : integer;
   end;
 
@@ -27,6 +27,7 @@ type
     Losuj: TButton;
     ListBox1: TListBox;
     ListBox2: TListBox;
+    procedure InfoClick(Sender: TObject);
     procedure KoniecClick(Sender: TObject);
     procedure LosujClick(Sender: TObject);
     procedure SortujClick(Sender: TObject);
@@ -36,8 +37,8 @@ type
 
 var
   Listy: TListy;
-  wsk    : PslistEl;                 // wskaźnik początku listy
-  wskL1, wskL2 : PslistEl;           // wskaźniki elementów listy
+  wsk    : PList;                 // wskaźnik początku listy
+  wskL1, wskL2 : PList;           // wskaźniki elementów listy
   war    : integer;                 // wartość elementu
   i    : integer;                   // licznik
   t    : array [1..20] of integer;  //tablica do zapietania listbox1
@@ -68,7 +69,7 @@ procedure CreateListBox1;
 
 procedure ShowListBox1;
 begin
-     Listy.listBox1.Clear;   // wyczyszczamy listbox
+
      i := 1;
      while wskL2^.next <> nil do
       begin
@@ -81,7 +82,8 @@ end;
 
 procedure ShowListBox2;
 begin
-  Listy.listBox2.Clear;  // wyczyszczamy listbox
+ ListBox2.clear;
+  //Listy.listBox2.Clear;  // wyczyszczamy listbox
   i := 1;
     while wskL2^.next <> nil do
       begin
@@ -137,9 +139,16 @@ begin
      //usuwanie;
 end;
 
+procedure TListy.InfoClick(Sender: TObject);
+begin
+  ShowMessage('Autor programu: Dawid Glinkowski');
+end;
+
 procedure TListy.KoniecClick(Sender: TObject);
 begin
   Close;
 end;
+
+
 
 end.

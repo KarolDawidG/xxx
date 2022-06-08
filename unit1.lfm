@@ -22,6 +22,7 @@ object Listy: TListy
     Top = 344
     Width = 120
     Caption = 'Info'
+    OnClick = InfoClick
     TabOrder = 1
   end
   object Sortuj: TButton
