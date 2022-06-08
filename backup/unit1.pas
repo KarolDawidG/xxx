@@ -37,6 +37,11 @@ type
 
 var
   Listy: TListy;
+  wsk    : PslistEl;                 // wskaźnik początku listy
+  wskL1, wskL2 : PslistEl;           // wskaźniki elementów listy
+  war    : integer;                 // wartość elementu
+  i    : integer;                   // licznik
+  t    : array [1..22] of integer;  //tablica do zapietania listbox1
 
 implementation
 
